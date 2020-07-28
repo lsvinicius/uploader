@@ -1,11 +1,12 @@
-FROM python:3.8.5 AS base
+FROM python:3.8.5-alpine AS base
+RUN adduser --disabled-password uploader_app &&\
+    apk add --no-cache sudo libmagic &&\
+    sudo -u uploader_app mkdir -m744 /home/uploader_app/.uploader
 WORKDIR /uploader
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
-RUN useradd --create-home uploader_app
-RUN mkdir -m644 /home/uploader_app/.uploader &&\
-    chown uploader_app:uploader_app /home/uploader_app/.uploader
+
 
 FROM base AS stg
 USER uploader_app
