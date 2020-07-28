@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<div>
+    <h2>Upload files</h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit">
+    </form>
+</div>
+<div>
+    <h3>Uploaded files</h3>
+    <table>
+        <tr>
+            <th>Filename</th>
+            <th>SHA256</th>
+        </tr>
+        {% for uploaded_file in all_uploaded_files %}
+            <tr>
+                <td>{{ uploaded_file.filename }}</td>
+                <td>{{ uploaded_file.sha256 }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>
