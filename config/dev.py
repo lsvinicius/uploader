@@ -1,6 +1,6 @@
 import os
 
-PORT = 8000
+PORT = 7000
 DB_NAME = 'upload_db_dev'
 DB_ADDRESS = 'localhost'
 DB_PORT = 27017

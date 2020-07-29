@@ -11,7 +11,7 @@ import config
 from exceptions import FileTooLarge, InvalidType, AlreadyUploaded
 
 if not os.path.exists(config.LOG_FOLDER):
-    os.mkdir(config.LOG_FOLDER, mode=0x777)
+    os.mkdir(config.LOG_FOLDER, mode=744)
 
 logging.basicConfig(
     filename=os.path.join(config.LOG_FOLDER, 'log.txt'),
